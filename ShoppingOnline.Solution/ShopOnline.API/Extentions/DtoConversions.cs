@@ -7,7 +7,7 @@ namespace ShopOnline.API.Extentions
     public static class DtoConversions
     {
         //Converts Product & Category Data from Database into DTO Object
-        public static IEnumerable<ProductDto> ConvertToDto(this IEnumerable<Product> products, IEnumerable<ProductCategory> productCategories)
+        public static IEnumerable<ProductDto> ConvertToDtoList(this IEnumerable<Product> products, IEnumerable<ProductCategory> productCategories)
         {
             return (from product in products join productCategory in productCategories on product.CategoryId equals productCategory.Id
                     select new ProductDto
@@ -21,6 +21,21 @@ namespace ShopOnline.API.Extentions
                         CategoryId = product.CategoryId,
                         CategoryName = productCategory.Name,
                     }).ToList();
+        }
+
+        public static ProductDto ConvertToDtoSingle(this Product products, ProductCategory productCategory)
+        {
+            return ( new ProductDto
+                    {
+                        Id = products.Id,
+                        Name = products.Name,
+                        Description = products.Description,
+                        ImageURL = products.ImageURL,
+                        Price = products.Price,
+                        Qty = products.Qty,
+                        CategoryId = products.CategoryId,
+                        CategoryName = productCategory.Name,
+                    });
         }
     }
 }
