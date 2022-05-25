@@ -7,7 +7,7 @@ using ShopOnline.Models.Dtos;
 
 namespace ShopOnline.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class ProductController : ControllerBase
     {
@@ -35,7 +35,7 @@ namespace ShopOnline.API.Controllers
                 }
                 else
                 {
-                    var ProductDtos = products.ConvertToDto(categories);
+                    var ProductDtos = products.ConvertToDtoList(categories);
                     return Ok(ProductDtos);
                 }
             }
@@ -68,21 +68,24 @@ namespace ShopOnline.API.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet("{Id}")]
         public async Task<ActionResult<ProductDto>> GetItem(int Id)
         {
             try
             {
                 //Get categories associated with product by CategoryId
                 var item = await this.productRepository.GetItem(Id);
+                //Get categories associated with product by CategoryId
+                var categories = await this.productRepository.GetCategory(item.CategoryId);
 
-                if (item == null)
+                if (item == null || categories == null)
                 {
                     return NotFound();
                 }
                 else
                 {
-                    return Ok(item);
+                    var ProductDtos = item.ConvertToDtoSingle(categories);
+                    return Ok(ProductDtos);
                 }
             }
             catch (Exception)
@@ -91,7 +94,7 @@ namespace ShopOnline.API.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpGet("{Id}")]
         public async Task<ActionResult<ProductCategory>> GetCategory(int Id)
         {
             try
