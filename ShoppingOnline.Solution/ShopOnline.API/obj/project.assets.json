@@ -961,6 +961,16 @@
             "rid": "win"
           }
         }
+      },
+      "ShopOnline.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/ShopOnline.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ShopOnline.Models.dll": {}
+        }
       }
     }
   },
@@ -3282,12 +3292,18 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "ShopOnline.Models/1.0.0": {
+      "type": "project",
+      "path": "../ShopOnline.Models/ShopOnline.Models.csproj",
+      "msbuildProject": "../ShopOnline.Models/ShopOnline.Models.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
       "Microsoft.EntityFrameworkCore.SqlServer >= 7.0.0-preview.3.22175.1",
       "Microsoft.EntityFrameworkCore.Tools >= 7.0.0-preview.3.22175.1",
+      "ShopOnline.Models >= 1.0.0",
       "Swashbuckle.AspNetCore >= 6.3.1"
     ]
   },
@@ -3317,7 +3333,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\hasgo\\source\\repos\\ShoppingApp\\ShoppingOnline.Solution\\ShopOnline.Models\\ShopOnline.Models.csproj": {
+              "projectPath": "C:\\Users\\hasgo\\source\\repos\\ShoppingApp\\ShoppingOnline.Solution\\ShopOnline.Models\\ShopOnline.Models.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -3366,5 +3386,13 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\hasgo\\source\\repos\\ShoppingApp\\ShoppingOnline.Solution\\ShopOnline.API\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }
