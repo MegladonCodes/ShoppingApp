@@ -25,7 +25,7 @@ namespace ShopOnline.API.Controllers
         {
             try
             {
-                var products = await this.productRepository.GetItem();
+                var products = await this.productRepository.GetItems();
                 //Get categories associated with product by CategoryId
                 var categories = await this.productRepository.GetCategories();
 
@@ -75,16 +75,17 @@ namespace ShopOnline.API.Controllers
             {
                 //Get categories associated with product by CategoryId
                 var item = await this.productRepository.GetItem(Id);
-                //Get categories associated with product by CategoryId
-                var categories = await this.productRepository.GetCategory(item.CategoryId);
 
-                if (item == null || categories == null)
+                if (item == null)
                 {
                     return NotFound();
                 }
                 else
                 {
-                    var ProductDtos = item.ConvertToDtoSingle(categories);
+                    //Get category associated with product by CategoryId
+                    var category = await this.productRepository.GetCategory(item.CategoryId);
+
+                    var ProductDtos = item.ConvertToDto(category);
                     return Ok(ProductDtos);
                 }
             }

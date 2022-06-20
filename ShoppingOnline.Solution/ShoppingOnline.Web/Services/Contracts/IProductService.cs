@@ -9,5 +9,6 @@ namespace ShoppingOnline.Web.Services.Contracts
     {
         //Implement API Call method definitions
         Task<IEnumerable<ProductDto>> GetItems();
+        Task<ProductDto> GetItem(int id);
     }
 }

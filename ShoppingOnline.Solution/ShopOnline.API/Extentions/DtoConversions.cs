@@ -23,7 +23,7 @@ namespace ShopOnline.API.Extentions
                     }).ToList();
         }
 
-        public static ProductDto ConvertToDtoSingle(this Product products, ProductCategory productCategory)
+        public static ProductDto ConvertToDto(this Product products, ProductCategory productCategory)
         {
             return ( new ProductDto
                     {

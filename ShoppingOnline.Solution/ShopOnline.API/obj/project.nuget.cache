@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "y8f55XKkUU51+U4PCiLkS0TqHnFPddDr5RfSfKO03TmurRpSWDWT6UagWcpYGhKpkYdhj6y/dkeMwBmnMr8c/A==",
+  "dgSpecHash": "m38JUFUZ82BvKDJ+pLPjPWZxOkIzQPDz1UeS70pOL7N5LKRubDg3v//RcbUhjJEIQoOC/MeUBLbo8QmzfweTMw==",
   "success": true,
   "projectFilePath": "C:\\Users\\hasgo\\source\\repos\\ShoppingApp\\ShoppingOnline.Solution\\ShopOnline.API\\ShopOnline.API.csproj",
   "expectedPackageFiles": [
@@ -76,5 +76,12 @@
     "C:\\Users\\hasgo\\.nuget\\packages\\system.threading.tasks.extensions\\4.5.2\\system.threading.tasks.extensions.4.5.2.nupkg.sha512",
     "C:\\Users\\hasgo\\.nuget\\packages\\system.windows.extensions\\5.0.0\\system.windows.extensions.5.0.0.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\hasgo\\source\\repos\\ShoppingApp\\ShoppingOnline.Solution\\ShopOnline.API\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

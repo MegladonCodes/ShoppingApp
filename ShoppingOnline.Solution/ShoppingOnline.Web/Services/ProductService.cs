@@ -26,5 +26,34 @@ namespace ShoppingOnline.Web.Services
                 throw;
             }
         }
+
+        public async Task<ProductDto> GetItem(int id)
+        {
+            try
+            {
+                var response = await this.httpClient.GetAsync($"/api/Product/GetItem/{id}");
+                //Check if response is successful
+                if(response.IsSuccessStatusCode)
+                { 
+                    //Check if no content returned -> Return default value
+                    if(response.StatusCode == System.Net.HttpStatusCode.NoContent)
+                    {
+                        return default(ProductDto); 
+                    }
+
+                    return await response.Content.ReadFromJsonAsync<ProductDto>();
+                }
+                else
+                {
+                    var errorMessage = await response.Content.ReadAsStringAsync();
+                    throw new Exception(errorMessage);
+                }
+            }
+            catch(Exception)
+            {
+                //Log Exception
+                throw;
+            }
+        }
     }
 }
