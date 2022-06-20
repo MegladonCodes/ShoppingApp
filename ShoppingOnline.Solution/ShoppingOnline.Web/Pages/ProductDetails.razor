@@ -1,0 +1,29 @@
+﻿@page "/ProductDetails/{id:int}"
+@inherits ProductDetailsBase
+
+@if(product == null && errorMessage == null)
+{
+    <DisplayLoadingSpinner/>
+}
+else if(errorMessage != null)
+{
+    <ErrorMessageComponent ErrorMessage="@errorMessage"></ErrorMessageComponent>
+    <br />
+    <h4>Sorry - We are unable to locate this product :(</h4>
+}
+else
+{
+    <h3 class="mb-5"></h3>
+    <div class="row">
+        <div class="col-md-6 col-md-4">
+            <img class="img-fluid" src="@product.ImageURL"/>
+        </div>
+        <div class="col-md-6">
+            <h3>@product.Name</h3>
+            <p class="mb-4">@product.Description</p>
+            <p class="mb-4">
+                <b>@product.Price.ToString("C")&nbsp;(@product.Qty items in stock)</b>
+            </p>
+        </div>
+    </div>
+}

@@ -23,11 +23,11 @@ namespace ShopOnline.API.Repositories
 
         public async Task<ProductCategory> GetCategory(int id)
         {
-            var category = await this.ShopOnlineDbContext.ProductCategories.Where(c => c.Id == id).FirstOrDefaultAsync();
+            var category = await this.ShopOnlineDbContext.ProductCategories.SingleOrDefaultAsync(c => c.Id == id);
             return category;
         }
 
-        public async Task<IEnumerable<Product>> GetItem()
+        public async Task<IEnumerable<Product>> GetItems()
         {
             var products = await this.ShopOnlineDbContext.Products.ToListAsync();
             //.Include(p => p.ProductCategory).ToListAsync(); -> To Optimize
@@ -36,7 +36,7 @@ namespace ShopOnline.API.Repositories
 
         public async Task<Product> GetItem(int id)
         {
-            var product = await this.ShopOnlineDbContext.Products.Where(c => c.Id == id).FirstOrDefaultAsync();
+            var product = await this.ShopOnlineDbContext.Products.FindAsync(id);//.Where(c => c.Id == id).FirstOrDefaultAsync();
             return product;
         }
     }
